@@ -1,0 +1,58 @@
+@import "colors.rasi"
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "JetBrainsMono Nerd Font 11";
+    display-drun: " Apps";
+    drun-display-format: "{name}";
+}
+
+* {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 600px;
+    background-color: @bg;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 0px;
+}
+
+mainbox {
+    padding: 12px;
+    children: [ inputbar, listview ];
+    spacing: 10px;
+}
+
+inputbar {
+    padding: 8px 12px;
+    background-color: @bg-alt;
+    border-radius: 0px;
+    children: [ prompt, entry ];
+    spacing: 8px;
+}
+
+prompt { text-color: @accent; }
+entry { placeholder: "Search..."; placeholder-color: @dim; }
+
+listview {
+    lines: 7;
+    scrollbar: false;
+}
+
+element {
+    padding: 8px;
+    border-radius: 0px;
+    spacing: 10px;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: #ffffff;
+}
+
+element-icon { size: 1.4em; }

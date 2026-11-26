@@ -1,0 +1,91 @@
+{
+    "layer": "top",
+    "position": "right",
+    "width": 64,
+    "margin": 0,
+    "spacing": 0,
+
+    "modules-left": ["clock"],
+    "modules-center": ["wlr/taskbar"],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "bluetooth",
+        "cpu",
+        "memory",
+        "backlight",
+        "battery",
+        "tray",
+        "custom/power"
+    ],
+
+    "clock": {
+        "format": "{0:%a}\n{0:%d}\n{0:%b}\n\n{0:%H}\n{0:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "on-click": "gnome-calendar"
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 24,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}%",
+        "format-muted": "󰝟",
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+
+    "network": {
+        "format-wifi": "󰖩",
+        "format-ethernet": "󰈀",
+        "format-linked": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}\n{ipaddr}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "format-no-controller": "",
+        "tooltip-format-connected": "{device_alias}",
+        "on-click": "blueman-manager"
+    },
+
+    "cpu": {
+        "format": "{usage}%",
+        "on-click": "gnome-system-monitor"
+    },
+
+    "memory": {
+        "format": "{percentage}%",
+        "on-click": "gnome-system-monitor"
+    },
+
+    "backlight": {
+        "format": "{percent}%",
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+    "battery": {
+        "format": "{capacity}%",
+        "format-charging": "{capacity}%",
+        "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center power"
+    },
+
+    "custom/power": {
+        "format": "\uf011",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}

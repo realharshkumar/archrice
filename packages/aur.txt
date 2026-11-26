@@ -1,0 +1,8 @@
+cloudflare-warp-bin
+python311
+slack-desktop
+sublime-text-4
+visual-studio-code-bin
+wlogout
+yay
+yay-debug

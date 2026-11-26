@@ -1,0 +1,10 @@
+configuration {
+    font: "Inconsolata 12";
+}
+* {
+    bg:      #0f1226ee;
+    bg-alt:  #313244;
+    fg:      #ffffff;
+    accent:  #e0212f;
+    dim:     #585b70;
+}
