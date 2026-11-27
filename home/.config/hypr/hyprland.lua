@@ -21,7 +21,7 @@ hl.monitor({
    output   = "",
    mode     = "preferred",
    position = "auto",
-   scale    = 1.33,
+   scale    = 1.2,
 })
 
 
@@ -84,8 +84,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
    general = {
-       gaps_in  = 1,
-       gaps_out = 1,
+       gaps_in  = 0,
+       gaps_out = 0,
 
        border_size = 1,
 
@@ -367,6 +367,7 @@ hl.window_rule({
 -- overlayLayerRule:set_enabled(false)
 
 -- Hyprland-run windowrule
+
 hl.window_rule({
    name  = "float-all",
    match = { class = ".*" },
@@ -374,5 +375,21 @@ hl.window_rule({
    size = c.win_size,
    center = true,
 })
+
+local floatMode = true
+
+hl.bind(mainMod .. " + F", function()
+	floatMode = not floatMode
+	local action = floatMode and "set" or "unset"
+	for _, w in ipairs(hl.get_windows()) do
+		hl.dispatch(hl.dsp.window.float({ action = action, window = "address:" .. w.address }))
+	end
+end)
+
+hl.on("window.open", function(w)
+	if not floatMode then
+		hl.dispatch(hl.dsp.window.float({ action = "unset", window = "address:" .. w.address }))
+	end
+end)
 
 hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | tee "$HOME/Pictures/Screenshots/$(date +%s).png" | wl-copy'))
